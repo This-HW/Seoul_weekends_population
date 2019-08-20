@@ -62,11 +62,7 @@ try:
         webpage = urlopen(req).read()
         soup = BeautifulSoup(webpage,"lxml",from_encoding='utf-8')
         soup1 = soup.find("meta",attrs={"property":"og:description"})
-        #meta 데이터를 받아오고 이름과 테그를 한번에 뽑아와서 속도 향상
-        #멀티프로세싱 사용해서 속도향상
-        #13000개 이상 데이터 수집 가능한가?
-        #for reallink1 in soup.find_all("meta",attrs={"property":"og:description"}):
-                
+        
         reallink1 = soup1['content']
         reallink1 = reallink1[reallink1.find("@")+1:reallink1.find(")")]
         reallink1 = reallink1[:20]
