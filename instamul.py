@@ -36,80 +36,68 @@ def f(x):
 
     print(str(num)+"개의 데이터 저장 중")
     num += 1
-    #frame.append(mylist)
     data = pd.DataFrame(frame)
     data.to_csv('insta.txt', mode='w',encoding='utf-8',header=None)
 
-    #return mylist
-
-#def start():
     
 
 
 if __name__ == '__main__':
     freeze_support()
-    pslink = Request('https://yeowool0217.tistory.com/547',headers={'User-Agent': 'Mozilla/5.0'})
-    pswebpage = urlopen(pslink).read()
-    pssoup = BeautifulSoup(pswebpage,"lxml",from_encoding='utf-8')
-    pssoup = pssoup.find("div",attrs={"class":"tt_article_useless_p_margin"})
-    password = pssoup.find('p').getText()
+
     print('### jinho021712@gmail.com ### Instacrawler Ver 0.1')
-    inputpassword = input("pw : " )
+    
+   
+    print("pass")
+    print("#크롤링 속도는 컴퓨터 사양에 따라 1.0 ~ 2.5 값으로 설정해주세요.")
 
-    if inputpassword == password:
-        print("pass")
-        print("#크롤링 속도는 컴퓨터 사양에 따라 1.0 ~ 2.5 값으로 설정해주세요.")
-        
-        scrolltime = float(input("크롤링 속도를 입력하세요 : "))
-        crawlnum = int(input("가져올 데이터의 수를 입력하세요 : " ))
-        search = input("검색어를 입력하세요 : " )
-        search = urllib.parse.quote(search)
-        url = 'https://www.instagram.com/explore/tags/'+str(search)+'/'
-        driver = webdriver.Chrome('chromedriver.exe')
+    scrolltime = float(input("크롤링 속도를 입력하세요 : "))
+    crawlnum = int(input("가져올 데이터의 수를 입력하세요 : " ))
+    search = input("검색어를 입력하세요 : " )
+    search = urllib.parse.quote(search)
+    url = 'https://www.instagram.com/explore/tags/'+str(search)+'/'
+    driver = webdriver.Chrome('chromedriver.exe')
 
-        driver.get(url) 
-        sleep(5)
+    driver.get(url) 
+    sleep(5)
 
 
-        SCROLL_PAUSE_TIME = scrolltime
-        reallink = []
+    SCROLL_PAUSE_TIME = scrolltime
+    reallink = []
 
-        while True:
-            pageString = driver.page_source
-            bsObj = BeautifulSoup(pageString, "lxml")
+    while True:
+        pageString = driver.page_source
+        bsObj = BeautifulSoup(pageString, "lxml")
 
-            for link1 in bsObj.find_all(name="div",attrs={"class":"Nnq7C weEfm"}):
-                
-                    title = link1.select('a')[0] 
-                    real = title.attrs['href']
-                    reallink.append(real) 
-                    title = link1.select('a')[1] 
-                    real = title.attrs['href']
-                    reallink.append(real) 
-                    title = link1.select('a')[2] 
-                    real = title.attrs['href']
-                    reallink.append(real)
-                    
-                    
-           
-            last_height = driver.execute_script("return document.body.scrollHeight")
+        for link1 in bsObj.find_all(name="div",attrs={"class":"Nnq7C weEfm"}):
+
+                title = link1.select('a')[0] 
+                real = title.attrs['href']
+                reallink.append(real) 
+                title = link1.select('a')[1] 
+                real = title.attrs['href']
+                reallink.append(real) 
+                title = link1.select('a')[2] 
+                real = title.attrs['href']
+                reallink.append(real)
+
+
+
+        last_height = driver.execute_script("return document.body.scrollHeight")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        sleep(SCROLL_PAUSE_TIME)
+        new_height = driver.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             sleep(SCROLL_PAUSE_TIME)
             new_height = driver.execute_script("return document.body.scrollHeight")
+
             if new_height == last_height:
-                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                sleep(SCROLL_PAUSE_TIME)
-                new_height = driver.execute_script("return document.body.scrollHeight")
+                break
 
-                if new_height == last_height:
-                    break
-                    
-                else:
-                    last_height = new_height
-                    continue
-    else:
-        print("reject")
-
+            else:
+                last_height = new_height
+                continue
 
     reallinknum = len(reallink)
     print("총"+str(reallinknum)+"개의 데이터를 받아왔습니다.")
@@ -119,9 +107,4 @@ if __name__ == '__main__':
     p.close()
     p.join()
     print("저장완료")
-    
-
-
-
-
-
+ 
