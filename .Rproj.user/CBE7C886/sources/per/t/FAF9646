@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575531115761.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "FAF9646",
+    "lastKnownWriteTime" : -5338282189039230228,
+    "last_content_update" : 1575531115761,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "398fc415400d4d13910a25e775b177ff",
+        "name" : "korpopmap2",
+        "title" : "korpopmap2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

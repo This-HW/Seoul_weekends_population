@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575530438890.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "56836743",
+    "id" : "5760A9C5",
+    "lastKnownWriteTime" : 1575538873,
+    "last_content_update" : 1575538873327,
+    "path" : "D:/Rstudy/Seoul_weekends_population/Seoul_weekends_population.r",
+    "project_path" : "Seoul_weekends_population.r",
+    "properties" : {
+        "cursorPosition" : "52,11",
+        "scrollLine" : "26",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
